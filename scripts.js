@@ -8,7 +8,7 @@ import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebas
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
     apiKey: "AIzaSyAcmkP-CIL20WEmhExarIvdKSz5rSfMOic",
-    authDomain: "savva-balashov.firebaseapp.com",
+    authDomain: "savva-balashov.me",
     projectId: "savva-balashov",
     storageBucket: "savva-balashov.appspot.com",
     messagingSenderId: "898187265023",
