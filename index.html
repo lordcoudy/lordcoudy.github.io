@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My CV</title>
     <link rel="stylesheet" href="styles.css">
+    <script defer src="https://www.gstatic.com/firebasejs/9.1.3/firebase-app-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/9.1.3/firebase-auth-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/9.1.3/firebase-firestore-compat.js"></script>
+    <script defer src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
     <script defer src="scripts.js"></script>
 </head>
 <body>
@@ -22,9 +26,7 @@
         <p id="description">Description about me.</p>
         <h3>Achievements</h3>
         <ul id="achievements">
-            <li>Achievement 1</li>
-            <li>Achievement 2</li>
-            <li>Achievement 3</li>
+            <!-- Achievements will be injected here by JavaScript -->
         </ul>
     </section>
     <section id="blogSection" style="display:none;">
@@ -34,9 +36,40 @@
         </div>
     </section>
 </main>
-<footer>
-    <a href="admin.html">Admin</a>
-</footer>
-<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+<div id="loginModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Login</h2>
+        <form id="loginForm">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+</div>
+<div id="adminSection" style="display:none;">
+    <h2>Edit CV</h2>
+    <label for="photoInput">Photo URL:</label>
+    <input type="text" id="photoInput" name="photoInput">
+    <label for="descriptionInput">Description:</label>
+    <textarea id="descriptionInput" name="descriptionInput"></textarea>
+    <label for="achievementsInput">Achievements (comma-separated):</label>
+    <textarea id="achievementsInput" name="achievementsInput"></textarea>
+    <button id="saveCV">Save CV</button>
+
+    <h2>Manage Blog</h2>
+    <form id="newPostForm">
+        <label for="postTitle">Title:</label>
+        <input type="text" id="postTitle" name="postTitle" required>
+        <label for="postContent">Content:</label>
+        <textarea id="postContent" name="postContent" required></textarea>
+        <button type="submit">Add Post</button>
+    </form>
+    <div id="adminBlogPosts">
+        <!-- Blog posts for admin will be injected here by JavaScript -->
+    </div>
+</div>
 </body>
 </html>
