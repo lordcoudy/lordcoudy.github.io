@@ -17,6 +17,7 @@ const db = firebase.firestore();
 // TinyMCE initialization
 tinymce.init({
     selector: 'textarea',
+    license_key: 'ribtibqeimq38767coull8p5qbnej28203xk0berir7hkuyt',
     plugins: 'lists link image table code',
     toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | bullist numlist outdent indent | link image | code',
     menubar: false
