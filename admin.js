@@ -13,6 +13,7 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 const db = firebase.firestore();
+const storage = firebase.storage();
 
 // TinyMCE initialization
 tinymce.init({
@@ -37,6 +38,18 @@ document.getElementById('loginForm').addEventListener('submit', (e) => {
         .catch((error) => {
             alert('Invalid credentials');
         });
+});
+
+// Handle authentication state changes
+auth.onAuthStateChanged(user => {
+    if (user) {
+        document.getElementById('loginSection').style.display = "none";
+        document.getElementById('adminSection').style.display = "block";
+        loadAdminData();
+    } else {
+        document.getElementById('loginSection').style.display = "block";
+        document.getElementById('adminSection').style.display = "none";
+    }
 });
 
 // Fetch CV data for editing
