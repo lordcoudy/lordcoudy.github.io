@@ -25,11 +25,32 @@ document.getElementById('viewBlog').addEventListener('click', () => {
     document.getElementById('blogSection').style.display = 'block';
 });
 
+function fetchCVPhoto() {
+    const cvPhoto = document.getElementById('myPhoto');
+
+    // Create a reference to the image in Firebase Storage
+    const storageRef = storage.ref();
+    const photoRef = storageRef.child('profile.jpg');
+
+    // Get the download URL for the image
+    photoRef.getDownloadURL()
+        .then((url) => {
+            // Update the image element's src attribute with the download URL
+            cvPhoto.src = url;
+        })
+        .catch((error) => {
+            console.error('Error getting CV photo:', error);
+        });
+}
+
+// Call the fetchCVPhoto function to fetch and display the CV photo
+fetchCVPhoto();
+
 // Fetch CV data
 db.collection('cv').doc('main').get().then((doc) => {
     if (doc.exists) {
         const data = doc.data();
-        document.getElementById('myPhoto').src = data.photo;
+        // document.getElementById('myPhoto').src = data.photo;
         document.getElementById('description').innerHTML = data.description;
         const achievementsList = document.getElementById('achievements');
         achievementsList.innerHTML = '';
