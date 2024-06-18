@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="admin.js"></script>
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+</head>
+<body>
+<header>
+    <h1>Admin Page</h1>
+</header>
+<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+<main>
+    <section id="loginSection">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <button type="submit">Login</button>
+        </form>
+    </section>
+    <section id="adminSection" style="display:none;">
+        <h2>Edit CV</h2>
+        <label for="photoInput">Photo URL:</label>
+        <input type="text" id="photoInput" name="photoInput">
+        <label for="descriptionInput">Description:</label>
+        <textarea id="descriptionInput" name="descriptionInput"></textarea>
+        <label for="achievementsInput">Achievements (comma-separated):</label>
+        <textarea id="achievementsInput" name="achievementsInput"></textarea>
+        <button id="saveCV">Save CV</button>
+
+        <h2>Manage Blog</h2>
+        <form id="newPostForm">
+            <label for="postTitle">Title:</label>
+            <input type="text" id="postTitle" name="postTitle" required>
+            <label for="postContent">Content:</label>
+            <textarea id="postContent" name="postContent" required></textarea>
+            <button type="submit">Add Post</button>
+        </form>
+        <div id="adminBlogPosts">
+            <!-- Blog posts for admin will be injected here by JavaScript -->
+        </div>
+    </section>
+</main>
+</body>
+</html>

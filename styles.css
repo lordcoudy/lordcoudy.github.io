@@ -1,0 +1,46 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: white;
+    color: black;
+}
+
+header {
+    background-color: #0000FF; /* pixel blue */
+    padding: 10px;
+    text-align: center;
+}
+
+nav button {
+    margin: 5px;
+    padding: 10px;
+    background-color: black;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+main {
+    padding: 20px;
+}
+
+#cvSection, #blogSection {
+    margin-top: 20px;
+}
+
+footer {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#adminSection {
+    display: flex;
+    flex-direction: column;
+}
+
+#adminSection label, #adminSection input, #adminSection textarea {
+    margin-top: 10px;
+}
+
+#adminBlogPosts {
+    margin-top: 20px;
+}

@@ -1,12 +1,42 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Savva Balashov Site</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My CV</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="scripts.js"></script>
 </head>
 <body>
-<p>Welcome</p>
-
+<header>
+    <h1>My Personal Website</h1>
+    <nav>
+        <button id="viewCV">View CV</button>
+        <button id="viewBlog">View Blog</button>
+    </nav>
+</header>
+<main>
+    <section id="cvSection">
+        <img src="myphoto.jpg" alt="My Photo" id="myPhoto">
+        <h2>My Name</h2>
+        <p id="description">Description about me.</p>
+        <h3>Achievements</h3>
+        <ul id="achievements">
+            <li>Achievement 1</li>
+            <li>Achievement 2</li>
+            <li>Achievement 3</li>
+        </ul>
+    </section>
+    <section id="blogSection" style="display:none;">
+        <h2>My Blog</h2>
+        <div id="blogPosts">
+            <!-- Blog posts will be injected here by JavaScript -->
+        </div>
+    </section>
+</main>
+<footer>
+    <a href="admin.html">Admin</a>
+</footer>
+<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 </body>
 </html>
