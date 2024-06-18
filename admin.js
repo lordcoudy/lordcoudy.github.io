@@ -45,7 +45,6 @@ auth.onAuthStateChanged(user => {
         db.collection('cv').doc('main').get().then((doc) => {
             if (doc.exists) {
                 const data = doc.data();
-                document.getElementById('photoInput').value = data.photo;
                 tinymce.get('descriptionInput').setContent(data.description);
                 tinymce.get('achievementsInput').setContent(data.achievements.join(', '));
             }
@@ -67,21 +66,43 @@ auth.onAuthStateChanged(user => {
 
 // Save CV data
 document.getElementById('saveCV').addEventListener('click', () => {
-    const photoUrl = document.getElementById('photoInput').value;
+    const photoInput = document.getElementById('photoInput');
     const description = tinymce.get('descriptionInput').getContent();
     const achievements = tinymce.get('achievementsInput').getContent().split(',');
 
-    db.collection('cv').doc('main').set({
-        photo: photoUrl,
-        description: description,
-        achievements: achievements
-    })
-        .then(() => {
-            alert('CV updated successfully');
-        })
-        .catch((error) => {
-            alert('Error updating CV: ', error);
+    if (photoInput.files.length > 0) {
+        const file = photoInput.files[0];
+        const storageRef = storage.ref();
+        const photoRef = storageRef.child(`photos/${file.name}`);
+        photoRef.put(file).then((snapshot) => {
+            return snapshot.ref.getDownloadURL();
+        }).then((url) => {
+            db.collection('cv').doc('main').set({
+                photo: url,
+                description: description,
+                achievements: achievements
+            })
+                .then(() => {
+                    alert('CV updated successfully');
+                })
+                .catch((error) => {
+                    alert('Error updating CV: ', error);
+                });
+        }).catch((error) => {
+            alert('Error uploading photo: ', error);
         });
+    } else {
+        db.collection('cv').doc('main').set({
+            description: description,
+            achievements: achievements
+        })
+            .then(() => {
+                alert('CV updated successfully');
+            })
+            .catch((error) => {
+                alert('Error updating CV: ', error);
+            });
+    }
 });
 
 // Add new blog post
